@@ -93,10 +93,11 @@ enter.addEventListener('click', () => {
 })
 const plus = document.querySelector('#plus');
 plus.addEventListener('click', () => {
-    if (a ===  a > 1) b = Number(displayValue.textContent) =operate(plus,a,b);
-    a = Number(displayValue.textContent);
+    if (a > 1) b = Number(displayValue.textContent);
+    if (b > 1) displayValue.textContent = operate('add',a,b);
+    if (a === 0) a = Number(displayValue.textContent);
     func = 'add';
-    displayValue.textContent = '';
+    if (b ===0 ) displayValue.textContent = '';
 });
 const minus = document.querySelector('#minus');
 minus.addEventListener('click', () => {
