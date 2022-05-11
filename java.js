@@ -22,10 +22,9 @@ function operate(func,a,b) {
 }
 
 let totalValue = 0;
+let currentValue = 0;
 let func = '';
 const displayValue = document.querySelector('.display');
-
-let currentValue = 0;
 
 const zero = document.querySelector('#zero');
 zero.addEventListener('click', () => {
@@ -80,7 +79,6 @@ nine.addEventListener('click', () => {
 const clear = document.querySelector('#clear');
 clear.addEventListener('click', () => {
     displayValue.textContent= '';
-    currentValue = displayValue.textContent;
     currentValue = 0;
     totalValue = 0;
     func = '';
@@ -88,7 +86,7 @@ clear.addEventListener('click', () => {
 const enter = document.querySelector('#enter');
 enter.addEventListener('click', () => {
     currentValue = (displayValue.textContent);  
-    totalValue = (operate(func,currentValue,totalValue));
+    totalValue = (operate(func,totalValue,currentValue));
     displayValue.textContent = totalValue;
 })
 const plus = document.querySelector('#plus');
@@ -100,19 +98,22 @@ plus.addEventListener('click', () => {
 });
 const minus = document.querySelector('#minus');
 minus.addEventListener('click', () => {
-    currentValue =displayValue.textContent;
+    totalValue =displayValue.textContent;
+    currentValue = 0
     func = 'subtract';
     displayValue.textContent = '';
 });
 const times = document.querySelector('#times');
 times.addEventListener('click', () => {
-    currentValue = displayValue.textContent;
+    totalValue = displayValue.textContent;
+    currentValue = 0
     func = 'multiply';
     displayValue.textContent = '';
 });
 const divide = document.querySelector('#divide');
 divide.addEventListener('click', () => {
-    currentValue = displayValue.textContent;
+    totalValue = displayValue.textContent;
+    currentValue = 0
     func = 'dividing';
     displayValue.textContent = '';
 });
