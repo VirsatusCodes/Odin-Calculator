@@ -24,6 +24,7 @@ function operate(func,a,b) {
 let totalValue = 0;
 let currentValue = 0;
 let func = '';
+let operationTicker = 0;
 const displayValue = document.querySelector('.display');
 
 const zero = document.querySelector('#zero');
@@ -33,8 +34,15 @@ zero.addEventListener('click', () => {
 });
 const one = document.querySelector('#one');
 one.addEventListener('click', () => {
-    displayValue.textContent= displayValue.textContent + 1;
+    if(operationTicker === 1) {
+        displayValue.textContent = '';
+        operationTicker--;
+        displayValue.textContent= displayValue.textContent + 1;
     currentValue = displayValue.textContent;
+    }
+    else {displayValue.textContent= displayValue.textContent + 1;
+    currentValue = displayValue.textContent;
+    }
 });
 const two = document.querySelector('#two');
 two.addEventListener('click', () => {
@@ -91,29 +99,37 @@ enter.addEventListener('click', () => {
 })
 const plus = document.querySelector('#plus');
 plus.addEventListener('click', () => {
-    totalValue =displayValue.textContent;
-    currentValue = 0
+    if (totalValue != 0) {
+    currentValue = (displayValue.textContent);
+    totalValue = (operate(func,totalValue,currentValue));
+    displayValue.textContent = totalValue;
+    operationTicker = 1;
+    }
+    else {totalValue =displayValue.textContent;
+    currentValue = 0;
     func = 'add';
     displayValue.textContent = '';
+    operationTicker = 1;
+    }
 });
 const minus = document.querySelector('#minus');
 minus.addEventListener('click', () => {
     totalValue =displayValue.textContent;
-    currentValue = 0
+    currentValue = 0;
     func = 'subtract';
     displayValue.textContent = '';
 });
 const times = document.querySelector('#times');
 times.addEventListener('click', () => {
     totalValue = displayValue.textContent;
-    currentValue = 0
+    currentValue = 0;
     func = 'multiply';
     displayValue.textContent = '';
 });
 const divide = document.querySelector('#divide');
 divide.addEventListener('click', () => {
     totalValue = displayValue.textContent;
-    currentValue = 0
+    currentValue = 0;
     func = 'dividing';
     displayValue.textContent = '';
 });
