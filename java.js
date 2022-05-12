@@ -168,6 +168,20 @@ nine.addEventListener('click', () => {
     }
 });
 
+const decimal = document.querySelector('#decimal');
+decimal.addEventListener('click', () => {
+    if(operationTicker === 1) {
+        displayValue.textContent = '';
+        operationTicker--;
+        displayValue.textContent= displayValue.textContent + '.' ;
+        currentValue = displayValue.textContent;
+    }
+    else {
+        displayValue.textContent= displayValue.textContent + '.' ;
+        currentValue = displayValue.textContent;
+    }
+});
+
 const clear = document.querySelector('#clear');
 clear.addEventListener('click', () => {
     displayValue.textContent= '';
@@ -175,6 +189,11 @@ clear.addEventListener('click', () => {
     totalValue = 0;
     func = '';
     operationTicker = 0;
+});
+
+const back = document.querySelector('#back');
+back.addEventListener('click', () => {
+    displayValue.textContent = displayValue.textContent.slice(0, displayValue.textContent.length - 1);
 });
 
 const enter = document.querySelector('#enter');
