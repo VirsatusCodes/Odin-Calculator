@@ -167,6 +167,7 @@ plus.addEventListener('click', () => {
     totalValue = (operate(func,totalValue,currentValue));
     displayValue.textContent = totalValue;
     operationTicker = 1;
+    func = 'add';
     }
     else {totalValue =displayValue.textContent;
     currentValue = 0;
@@ -182,6 +183,7 @@ minus.addEventListener('click', () => {
         totalValue = (operate(func,totalValue,currentValue));
         displayValue.textContent = totalValue;
         operationTicker = 1;
+        func = 'subtract';
         }
         else {totalValue =displayValue.textContent;
         currentValue = 0;
@@ -197,6 +199,7 @@ times.addEventListener('click', () => {
         totalValue = (operate(func,totalValue,currentValue));
         displayValue.textContent = totalValue;
         operationTicker = 1;
+        func = 'multiply';
         }
         else {totalValue =displayValue.textContent;
         currentValue = 0;
@@ -212,6 +215,7 @@ divide.addEventListener('click', () => {
         totalValue = (operate(func,totalValue,currentValue));
         displayValue.textContent = totalValue;
         operationTicker = 1;
+        func = 'dividing';
         }
         else {totalValue =displayValue.textContent;
         currentValue = 0;
