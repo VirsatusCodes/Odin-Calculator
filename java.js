@@ -11,7 +11,8 @@ function multiply(a, b){
 };
 
 function dividing(a, b){
-    return Number((a/b).toFixed(8));
+    if( b > 0) return Number((a/b).toFixed(8));
+    else return 'Nice try buddy!';
 };
 
 function operate(func,a,b) {
@@ -25,6 +26,7 @@ let totalValue = 0;
 let currentValue = 0;
 let func = '';
 let operationTicker = 0;
+let enterTicker = 0;
 const displayValue = document.querySelector('.display');
 
 const zero = document.querySelector('#zero');
@@ -157,11 +159,13 @@ clear.addEventListener('click', () => {
 const enter = document.querySelector('#enter');
 enter.addEventListener('click', () => {
     currentValue = (displayValue.textContent);  
-    if (currentValue === 0 || totalValue === 0){
-        currentValue = currentValue
+    if (currentValue === 0 || totalValue === 0 || currentValue === '' || enterTicker === 1){
+        totalValue = totalValue;
     }
     else {totalValue = (operate(func,totalValue,currentValue));
     displayValue.textContent = totalValue;
+    operationTicker = 1;
+    enterTicker=1;
     }
 })
 const plus = document.querySelector('#plus');
@@ -172,12 +176,14 @@ plus.addEventListener('click', () => {
     displayValue.textContent = totalValue;
     operationTicker = 1;
     func = 'add';
+    enterTicker=0;
     }
     else {totalValue =displayValue.textContent;
     currentValue = 0;
     func = 'add';
     displayValue.textContent = '';
     operationTicker = 1;
+    enterTicker=0;
     }
 });
 const minus = document.querySelector('#minus');
@@ -188,12 +194,14 @@ minus.addEventListener('click', () => {
         displayValue.textContent = totalValue;
         operationTicker = 1;
         func = 'subtract';
+        enterTicker=0;
         }
         else {totalValue =displayValue.textContent;
         currentValue = 0;
         func = 'subtract';
         displayValue.textContent = '';
         operationTicker = 1;
+        enterTicker=0;
         }
 });
 const times = document.querySelector('#times');
@@ -204,12 +212,14 @@ times.addEventListener('click', () => {
         displayValue.textContent = totalValue;
         operationTicker = 1;
         func = 'multiply';
+        enterTicker=0;
         }
         else {totalValue =displayValue.textContent;
         currentValue = 0;
         func = 'multiply';
         displayValue.textContent = '';
         operationTicker = 1;
+        enterTicker=0;
         }
 });
 const divide = document.querySelector('#divide');
@@ -220,12 +230,14 @@ divide.addEventListener('click', () => {
         displayValue.textContent = totalValue;
         operationTicker = 1;
         func = 'dividing';
+        enterTicker=0;
         }
         else {totalValue =displayValue.textContent;
         currentValue = 0;
         func = 'dividing';
         displayValue.textContent = '';
         operationTicker = 1;
+        enterTicker=0;
         }
 });
 //dont forget to convert string into numbers if necessary.+
