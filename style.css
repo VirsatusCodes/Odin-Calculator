@@ -26,7 +26,7 @@ body {
 .calc-outline{
     display: flex;
     width : 350px;
-    height: 400px;
+    height: 450px;
     flex-flow: column;
     border:solid black;
     background-color: lightgray;
@@ -50,6 +50,17 @@ body {
     width: 60px;
     height: 60px;
     border: solid black;
+    background-color: yellow;
+    font-size: 20px;
+}
+#clear, #back{
+    width:124px;
+    background-color: red;
+    font-weight: bold;
+    font-size: 30px;
+}
+#plus, #minus, #times, #divide, #enter {
+    background-color: seagreen;
 }
 
 .footer{
