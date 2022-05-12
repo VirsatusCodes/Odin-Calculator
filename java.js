@@ -179,12 +179,22 @@ clear.addEventListener('click', () => {
 
 const enter = document.querySelector('#enter');
 enter.addEventListener('click', () => {
-    if (currentValue === 0 || totalValue === 0 || currentValue === ''){
-        totalValue = totalValue;
-    }
-    else {totalValue = (operate(func,totalValue,currentValue));
+    if (func === '' || totalValue === 0) {
+    displayValue.textContent = displayValue.textContent;
+ } 
+    else if ( totalValue > 0 && func === '') {
+    totalValue = (operate(func, totalValue, totalValue));
     displayValue.textContent = totalValue;
+    currentValue= 0;
     operationTicker = 1;
+    func = '';
+    }
+    else {
+    totalValue = (operate(func, totalValue, currentValue));
+    displayValue.textContent = totalValue;
+    currentValue= 0;
+    operationTicker = 1;
+    func = ''; 
     }
 });
 
@@ -194,6 +204,9 @@ plus.addEventListener('click', () => {
         totalValue = displayValue.textContent;
         func= 'add';
         operationTicker = 1;
+    }
+    else if(currentValue=== 0){
+        func = 'add';
     }
     else {
         currentValue = displayValue.textContent;
@@ -212,6 +225,9 @@ minus.addEventListener('click', () => {
         func= 'subtract';
         operationTicker = 1;
     }
+    else if(currentValue=== 0){
+        func = 'subtract';
+    }
     else {
         currentValue = displayValue.textContent;
         totalValue = (operate(func, totalValue, currentValue));
@@ -229,6 +245,9 @@ times.addEventListener('click', () => {
         func= 'multiply';
         operationTicker = 1;
     }
+    else if(currentValue=== 0){
+        func = 'multiply';
+    }
     else {
         currentValue = displayValue.textContent;
         totalValue = (operate(func, totalValue, currentValue));
@@ -245,6 +264,9 @@ divide.addEventListener('click', () => {
         totalValue = displayValue.textContent;
         func= 'dividing';
         operationTicker = 1;
+    }
+    else if(currentValue=== 0){
+        func = 'dividing';
     }
     else {
         currentValue = displayValue.textContent;
