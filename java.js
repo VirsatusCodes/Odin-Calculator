@@ -157,8 +157,12 @@ clear.addEventListener('click', () => {
 const enter = document.querySelector('#enter');
 enter.addEventListener('click', () => {
     currentValue = (displayValue.textContent);  
-    totalValue = (operate(func,totalValue,currentValue));
+    if (currentValue === 0 || totalValue === 0){
+        currentValue = currentValue
+    }
+    else {totalValue = (operate(func,totalValue,currentValue));
     displayValue.textContent = totalValue;
+    }
 })
 const plus = document.querySelector('#plus');
 plus.addEventListener('click', () => {
