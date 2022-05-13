@@ -26,7 +26,47 @@ let totalValue = 0;
 let currentValue = 0;
 let func = '';
 let operationTicker = 0;
+let enterTicker=0;
 const displayValue = document.querySelector('.display');
+
+function operationsDirections(operation){
+    if (totalValue === 0){
+        totalValue = displayValue.textContent;
+        func= operation;
+        operationTicker = 1;
+    }
+    else if(currentValue=== 0){
+        func = operation;
+    }
+    else if(currentValue != 0 && totalValue != 0 && enterTicker === 1){
+        totalValue= displayValue.textContent;
+        currentValue=0;
+        func=operation;
+        operationTicker=1;
+        enterTicker--;
+    }
+    else {
+        currentValue = displayValue.textContent;
+        totalValue = (operate(func, totalValue, currentValue));
+        func = operation;
+        currentValue = 0;
+        displayValue.textContent = totalValue;
+        operationTicker = 1;
+    }
+}
+
+function numberDirections(number){
+    if(operationTicker === 1) {
+        displayValue.textContent = '';
+        operationTicker--;
+        displayValue.textContent= displayValue.textContent + number;
+        currentValue = displayValue.textContent;
+    }
+    else {
+        displayValue.textContent= displayValue.textContent + number;
+        currentValue = displayValue.textContent;
+    }
+}
 
 const zero = document.querySelector('#zero');
 zero.addEventListener('click', () => {
@@ -47,128 +87,47 @@ zero.addEventListener('click', () => {
 
 const one = document.querySelector('#one');
 one.addEventListener('click', () => {
-    if(operationTicker === 1) {
-        displayValue.textContent = '';
-        operationTicker--;
-        displayValue.textContent= displayValue.textContent + 1;
-        currentValue = displayValue.textContent;
-    }
-    else {
-        displayValue.textContent= displayValue.textContent + 1;
-        currentValue = displayValue.textContent;
-    }
+    numberDirections(1);
 });
 
 const two = document.querySelector('#two');
 two.addEventListener('click', () => {
-    if(operationTicker === 1) {
-        displayValue.textContent = '';
-        operationTicker--;
-        displayValue.textContent= displayValue.textContent + 2;
-        currentValue = displayValue.textContent;
-    }
-    else {
-        displayValue.textContent= displayValue.textContent + 2;
-        currentValue = displayValue.textContent;
-    }
+    numberDirections(2);
 });
 
 const three = document.querySelector('#three');
 three.addEventListener('click', () => {
-    if(operationTicker === 1) {
-        displayValue.textContent = '';
-        operationTicker--;
-        displayValue.textContent= displayValue.textContent + 3;
-        currentValue = displayValue.textContent;
-    }
-    else {
-        displayValue.textContent= displayValue.textContent + 3;
-        currentValue = displayValue.textContent;
-    }
+    numberDirections(3);
 });
 
 const four = document.querySelector('#four');
 four.addEventListener('click', () => {
-    if(operationTicker === 1) {
-        displayValue.textContent = '';
-        operationTicker--;
-        displayValue.textContent= displayValue.textContent + 4;
-        currentValue = displayValue.textContent;
-    }
-    else {
-        displayValue.textContent= displayValue.textContent + 4;
-        currentValue = displayValue.textContent;
-    }
+    numberDirections(4);
 });
 
 const five = document.querySelector('#five');
 five.addEventListener('click', () => {
-    if(operationTicker === 1) {
-        displayValue.textContent = '';
-        operationTicker--;
-        displayValue.textContent= displayValue.textContent + 5;
-        currentValue = displayValue.textContent;
-    }
-    else {
-        displayValue.textContent= displayValue.textContent + 5;
-        currentValue = displayValue.textContent;
-    }
+    numberDirections(5);
 });
 
 const six = document.querySelector('#six');
 six.addEventListener('click', () => {
-    if(operationTicker === 1) {
-        displayValue.textContent = '';
-        operationTicker--;
-        displayValue.textContent= displayValue.textContent + 6;
-        currentValue = displayValue.textContent;
-    }
-    else {
-        displayValue.textContent= displayValue.textContent + 6;
-        currentValue = displayValue.textContent;
-    }
+    numberDirections(6);
 });
 
 const seven = document.querySelector('#seven');
 seven.addEventListener('click', () => {
-    if(operationTicker === 1) {
-        displayValue.textContent = '';
-        operationTicker--;
-        displayValue.textContent= displayValue.textContent + 7;
-        currentValue = displayValue.textContent;
-    }
-    else {
-        displayValue.textContent= displayValue.textContent + 7;
-        currentValue = displayValue.textContent;
-    }
+    numberDirections(7);
 });
 
 const eight = document.querySelector('#eight');
 eight.addEventListener('click', () => {
-    if(operationTicker === 1) {
-        displayValue.textContent = '';
-        operationTicker--;
-        displayValue.textContent= displayValue.textContent + 8;
-        currentValue = displayValue.textContent;
-    }
-    else {
-        displayValue.textContent= displayValue.textContent + 8;
-        currentValue = displayValue.textContent;
-    }
+    numberDirections(8);
 });
 
 const nine = document.querySelector('#nine');
 nine.addEventListener('click', () => {
-    if(operationTicker === 1) {
-        displayValue.textContent = '';
-        operationTicker--;
-        displayValue.textContent= displayValue.textContent + 9;
-        currentValue = displayValue.textContent;
-    }
-    else {
-        displayValue.textContent= displayValue.textContent + 9;
-        currentValue = displayValue.textContent;
-    }
+    numberDirections(9);
 });
 
 const decimal = document.querySelector('#decimal');
@@ -211,6 +170,7 @@ enter.addEventListener('click', () => {
     displayValue.textContent = totalValue;
     currentValue= 0;
     operationTicker = 1;
+    enterTicker=1;
     func = '';
     }
     else {
@@ -218,93 +178,27 @@ enter.addEventListener('click', () => {
     displayValue.textContent = totalValue;
     currentValue= 0;
     operationTicker = 1;
+    enterTicker=1;
     func = ''; 
     }
 });
 
 const plus = document.querySelector('#plus');
 plus.addEventListener('click', () => {
-    if (totalValue === 0){
-        totalValue = displayValue.textContent;
-        func= 'add';
-        operationTicker = 1;
-    }
-    else if(currentValue=== 0){
-        func = 'add';
-    }
-    else if(currentValue != 0 && totalValue != 0){
-        totalValue= displayValue.textContent;
-        currentValue=0;
-        func='add';
-        operationTicker=1;
-
-    }
-    else {
-        currentValue = displayValue.textContent;
-        totalValue = (operate(func, totalValue, currentValue));
-        func = 'add';
-        currentValue = 0;
-        displayValue.textContent = totalValue;
-        operationTicker = 1;
-    }
+    operationsDirections('add')
 });
 
 const minus = document.querySelector('#minus');
 minus.addEventListener('click', () => {
-    if (totalValue === 0){
-        totalValue = displayValue.textContent;
-        func= 'subtract';
-        operationTicker = 1;
-    }
-    else if(currentValue=== 0){
-        func = 'subtract';
-    }
-    else {
-        currentValue = displayValue.textContent;
-        totalValue = (operate(func, totalValue, currentValue));
-        func = 'subtract';
-        currentValue = 0;
-        displayValue.textContent = totalValue;
-        operationTicker = 1;
-    }
+    operationsDirections('subtract')
 });
 
 const times = document.querySelector('#times');
 times.addEventListener('click', () => {
-    if (totalValue === 0){
-        totalValue = displayValue.textContent;
-        func= 'multiply';
-        operationTicker = 1;
-    }
-    else if(currentValue=== 0){
-        func = 'multiply';
-    }
-    else {
-        currentValue = displayValue.textContent;
-        totalValue = (operate(func, totalValue, currentValue));
-        func = 'multiply';
-        currentValue = 0;
-        displayValue.textContent = totalValue;
-        operationTicker = 1;
-    }
+    operationsDirections('multiply')
 });
 
 const divide = document.querySelector('#divide');
 divide.addEventListener('click', () => {
-    if (totalValue === 0){
-        totalValue = displayValue.textContent;
-        func= 'dividing';
-        operationTicker = 1;
-    }
-    else if(currentValue=== 0){
-        func = 'dividing';
-    }
-    else {
-        currentValue = displayValue.textContent;
-        totalValue = (operate(func, totalValue, currentValue));
-        func = 'dividing';
-        currentValue = 0;
-        displayValue.textContent = totalValue;
-        operationTicker = 1;
-    }
+    operationsDirections('dividing')
 });
