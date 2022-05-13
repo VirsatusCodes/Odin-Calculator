@@ -232,6 +232,13 @@ plus.addEventListener('click', () => {
     else if(currentValue=== 0){
         func = 'add';
     }
+    else if(currentValue != 0 && totalValue != 0){
+        totalValue= displayValue.textContent;
+        currentValue=0;
+        func='add';
+        operationTicker=1;
+
+    }
     else {
         currentValue = displayValue.textContent;
         totalValue = (operate(func, totalValue, currentValue));
