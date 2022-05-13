@@ -36,6 +36,9 @@ zero.addEventListener('click', () => {
         displayValue.textContent= displayValue.textContent + 0;
         currentValue = displayValue.textContent;
     }
+    else if(displayValue.textContent[0]==0){
+        displayValue.textContent= displayValue.textContent
+    }
     else { 
         displayValue.textContent= displayValue.textContent + 0;
         currentValue = displayValue.textContent;
