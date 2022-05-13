@@ -20,7 +20,7 @@ function operate(func,a,b) {
     if (func === 'subtract') return subtract(Number(a),Number(b));
     if (func === 'multiply') return multiply(Number(a),Number(b));
     if (func === 'dividing') return dividing(Number(a),Number(b));
-}
+};
 
 let totalValue = 0;
 let currentValue = 0;
@@ -30,20 +30,19 @@ let enterTicker=0;
 const displayValue = document.querySelector('.display');
 
 function operationsDirections(operation){
-    if (totalValue === 0){
+    if(enterTicker === 1){
+        totalValue = displayValue.textContent;
+        operationTicker = 1;
+        enterTicker--;
+        func = operation; 
+    }
+    else if (totalValue === 0){
         totalValue = displayValue.textContent;
         func= operation;
         operationTicker = 1;
     }
     else if(currentValue=== 0){
         func = operation;
-    }
-    else if(currentValue != 0 && totalValue != 0 && enterTicker === 1){
-        totalValue= displayValue.textContent;
-        currentValue=0;
-        func=operation;
-        operationTicker=1;
-        enterTicker--;
     }
     else {
         currentValue = displayValue.textContent;
@@ -53,7 +52,7 @@ function operationsDirections(operation){
         displayValue.textContent = totalValue;
         operationTicker = 1;
     }
-}
+};
 
 function numberDirections(number){
     if(operationTicker === 1) {
@@ -66,7 +65,7 @@ function numberDirections(number){
         displayValue.textContent= displayValue.textContent + number;
         currentValue = displayValue.textContent;
     }
-}
+};
 
 const zero = document.querySelector('#zero');
 zero.addEventListener('click', () => {
