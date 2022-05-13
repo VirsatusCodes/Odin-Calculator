@@ -171,13 +171,15 @@ nine.addEventListener('click', () => {
 const decimal = document.querySelector('#decimal');
 decimal.addEventListener('click', () => {
     if(operationTicker === 1) {
-        displayValue.textContent = '';
+        displayValue.textContent = '0.';
         operationTicker--;
-        displayValue.textContent= displayValue.textContent + '.' ;
         currentValue = displayValue.textContent;
     }
+    else if(displayValue.textContent.includes('.')){
+            displayValue.textContent = displayValue.textContent;
+        }
     else {
-        displayValue.textContent= displayValue.textContent + '.' ;
+        displayValue.textContent= displayValue.textContent + '.';
         currentValue = displayValue.textContent;
     }
 });
