@@ -67,8 +67,57 @@ function numberDirections(number){
     }
 };
 
-const zero = document.querySelector('#zero');
-zero.addEventListener('click', () => {
+function bigEnter(){
+    if (func === '' || totalValue === 0) {
+     displayValue.textContent = displayValue.textContent;
+  } 
+     else if ( totalValue > 0 && func === '') {
+     totalValue = (operate(func, totalValue, totalValue));
+     displayValue.textContent = totalValue;
+     currentValue= 0;
+     operationTicker = 1;
+     enterTicker=1;
+     func = '';
+     }
+     else {
+     totalValue = (operate(func, totalValue, currentValue));
+     displayValue.textContent = totalValue;
+     currentValue= 0;
+     operationTicker = 1;
+     enterTicker=1;
+     func = ''; 
+     } 
+ };
+
+ function bigClear() {
+    displayValue.textContent= '';
+    currentValue = 0;
+    totalValue = 0;
+    func = '';
+    operationTicker = 0;
+};
+
+function bigBack(){
+    displayValue.textContent = displayValue.textContent.slice(0, displayValue.textContent.length - 1);
+    currentValue = displayValue.textContent;
+};
+
+function bigDecimal(){
+    if(operationTicker === 1) {
+        displayValue.textContent = '0.';
+        operationTicker--;
+        currentValue = displayValue.textContent;
+    }
+    else if(displayValue.textContent.includes('.')){
+            displayValue.textContent = displayValue.textContent;
+        }
+    else {
+        displayValue.textContent= displayValue.textContent + '.';
+        currentValue = displayValue.textContent;
+    }
+};
+
+function bigZero(){
     if(operationTicker === 1) {
         displayValue.textContent = '';
         operationTicker--;
@@ -76,12 +125,17 @@ zero.addEventListener('click', () => {
         currentValue = displayValue.textContent;
     }
     else if(displayValue.textContent[0]==0){
-        displayValue.textContent= displayValue.textContent
+        displayValue.textContent= displayValue.textContent;
     }
     else { 
         displayValue.textContent= displayValue.textContent + 0;
         currentValue = displayValue.textContent;
-    }
+    } 
+}
+
+const zero = document.querySelector('#zero');
+zero.addEventListener('click', () => {
+    bigZero();
 });
 
 const one = document.querySelector('#one');
@@ -131,73 +185,40 @@ nine.addEventListener('click', () => {
 
 const decimal = document.querySelector('#decimal');
 decimal.addEventListener('click', () => {
-    if(operationTicker === 1) {
-        displayValue.textContent = '0.';
-        operationTicker--;
-        currentValue = displayValue.textContent;
-    }
-    else if(displayValue.textContent.includes('.')){
-            displayValue.textContent = displayValue.textContent;
-        }
-    else {
-        displayValue.textContent= displayValue.textContent + '.';
-        currentValue = displayValue.textContent;
-    }
+    bigDecimal();
 });
 
 const clear = document.querySelector('#clear');
 clear.addEventListener('click', () => {
-    displayValue.textContent= '';
-    currentValue = 0;
-    totalValue = 0;
-    func = '';
-    operationTicker = 0;
+    bigClear();
 });
 
 const back = document.querySelector('#back');
 back.addEventListener('click', () => {
-    displayValue.textContent = displayValue.textContent.slice(0, displayValue.textContent.length - 1);
+    bigBack();
 });
 
 const enter = document.querySelector('#enter');
 enter.addEventListener('click', () => {
-    if (func === '' || totalValue === 0) {
-    displayValue.textContent = displayValue.textContent;
- } 
-    else if ( totalValue > 0 && func === '') {
-    totalValue = (operate(func, totalValue, totalValue));
-    displayValue.textContent = totalValue;
-    currentValue= 0;
-    operationTicker = 1;
-    enterTicker=1;
-    func = '';
-    }
-    else {
-    totalValue = (operate(func, totalValue, currentValue));
-    displayValue.textContent = totalValue;
-    currentValue= 0;
-    operationTicker = 1;
-    enterTicker=1;
-    func = ''; 
-    }
+    bigEnter();
 });
 
 const plus = document.querySelector('#plus');
 plus.addEventListener('click', () => {
-    operationsDirections('add')
+    operationsDirections('add');
 });
 
 const minus = document.querySelector('#minus');
 minus.addEventListener('click', () => {
-    operationsDirections('subtract')
+    operationsDirections('subtract');
 });
 
 const times = document.querySelector('#times');
 times.addEventListener('click', () => {
-    operationsDirections('multiply')
+    operationsDirections('multiply');
 });
 
 const divide = document.querySelector('#divide');
 divide.addEventListener('click', () => {
-    operationsDirections('dividing')
+    operationsDirections('dividing');
 });
