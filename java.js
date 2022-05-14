@@ -222,3 +222,16 @@ const divide = document.querySelector('#divide');
 divide.addEventListener('click', () => {
     operationsDirections('dividing');
 });
+
+window.addEventListener('keydown', function(e) {
+    if (e.key == 1 || e.key == 2 || e.key == 3 || e.key == 4 || e.key == 5 || e.key == 6 || e.key == 7 || e.key == 8 || e.key == 9) numberDirections(e.key);
+    else if (e.key == 0) bigZero();
+    else if (e.key == 'Delete') bigClear();
+    else if (e.key == 'Backspace') bigBack();
+    else if (e.key == '+') operationsDirections('add');
+    else if (e.key == '-') operationsDirections('subtract');
+    else if (e.key == '*') operationsDirections('multiply');
+    else if (e.key == '/') operationsDirections('dividing');
+    else if (e.key == '.') bigDecimal();
+    else if (e.key == 'Enter') bigEnter();
+});
