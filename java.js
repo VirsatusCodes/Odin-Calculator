@@ -70,6 +70,7 @@ function numberDirections(number){
 function bigEnter(){
     if (func === '' || totalValue === 0) {
      displayValue.textContent = displayValue.textContent;
+     console.log('1')
   } 
      else if ( totalValue > 0 && func === '') {
      totalValue = (operate(func, totalValue, totalValue));
@@ -78,6 +79,7 @@ function bigEnter(){
      operationTicker = 1;
      enterTicker=1;
      func = '';
+     console.log('2')
      }
      else {
      totalValue = (operate(func, totalValue, currentValue));
@@ -86,6 +88,7 @@ function bigEnter(){
      operationTicker = 1;
      enterTicker=1;
      func = ''; 
+     console.log('3')
      } 
  };
 
@@ -234,4 +237,5 @@ window.addEventListener('keydown', function(e) {
     else if (e.key == '/') operationsDirections('dividing');
     else if (e.key == '.') bigDecimal();
     else if (e.key == 'Enter') bigEnter();
+    else return;
 });
