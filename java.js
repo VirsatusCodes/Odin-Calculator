@@ -68,9 +68,8 @@ function numberDirections(number){
 };
 
 function bigEnter(){
-    if (func === '' || totalValue === 0) {
-     displayValue.textContent = displayValue.textContent;
-     console.log('1')
+    if (totalValue === 0) {
+     return;
   } 
      else if ( totalValue > 0 && func === '') {
      totalValue = (operate(func, totalValue, totalValue));
@@ -79,7 +78,6 @@ function bigEnter(){
      operationTicker = 1;
      enterTicker=1;
      func = '';
-     console.log('2')
      }
      else {
      totalValue = (operate(func, totalValue, currentValue));
@@ -88,7 +86,6 @@ function bigEnter(){
      operationTicker = 1;
      enterTicker=1;
      func = ''; 
-     console.log('3')
      } 
  };
 
@@ -112,7 +109,7 @@ function bigDecimal(){
         currentValue = displayValue.textContent;
     }
     else if(displayValue.textContent.includes('.')){
-            displayValue.textContent = displayValue.textContent;
+            return;
         }
     else {
         displayValue.textContent= displayValue.textContent + '.';
@@ -128,7 +125,7 @@ function bigZero(){
         currentValue = displayValue.textContent;
     }
     else if(displayValue.textContent[0]==0){
-        displayValue.textContent= displayValue.textContent;
+        return;
     }
     else { 
         displayValue.textContent= displayValue.textContent + 0;
